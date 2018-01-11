@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MvcMusicStore.Models.Sarki>
+
+@{
+    ViewBag.Title = "Şarkı Listesi";
+}
+
+<h2>Şarkı Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Şarkı Ekle", "Create")
+</p>
+
+@using (Html.BeginForm())
+{ <p> İsme Göre arama: @Html.TextBox("SearchString") <input type="submit" value="Ara" /></p> }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sarki_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sarki_suresi)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sarki_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sarki_suresi)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.SarkiID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.SarkiID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.SarkiID }) |
+            @Html.ActionLink("Sepete Ekle", "Sepet", new { id=item.SarkiID})
+        </td>
+    </tr>
+}
+
+</table>

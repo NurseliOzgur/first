@@ -1,0 +1,41 @@
+﻿@model MvcMusicStore.Models.Album
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Album Sil</h2>
+
+<h3>Bu albumü silmek istediğinizden emin misiniz?</h3>
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Album_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cikis_tarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cikis_tarihi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Albumü Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Album Listesine Geri Dön", "Index")
+        </div>
+    }
+</div>

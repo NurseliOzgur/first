@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MvcMusicStore.Models.Album>
+
+@{
+    ViewBag.Title = "Albumler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Album Oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Album_Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cikis_tarihi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Album_Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cikis_tarihi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.AlbumID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.AlbumID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.AlbumID })
+        </td>
+    </tr>
+}
+
+</table>
